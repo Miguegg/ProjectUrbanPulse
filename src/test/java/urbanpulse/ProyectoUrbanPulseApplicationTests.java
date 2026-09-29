@@ -1,4 +1,4 @@
-package org.example.proyectourbanpulse;
+package urbanpulse;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
