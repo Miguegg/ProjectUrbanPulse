@@ -1,0 +1,1 @@
+This repository uses centralized AI instructions. Always read and strictly follow the architecture, stack, and rules specified in the `AI_CONTEXT.md` file before generating code.
