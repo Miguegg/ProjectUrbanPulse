@@ -1,4 +1,4 @@
-package org.example.proyectourbanpulse.controller.rest;
+package urbanpulse.controller.rest;
 
 
 import lombok.AllArgsConstructor;
