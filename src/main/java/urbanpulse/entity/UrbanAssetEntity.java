@@ -29,7 +29,7 @@ public class UrbanAssetEntity {
     @Column(nullable = false)
     private ExternalSource source;
 
-    // Id del activo en la fuente, p. ej. 3948 para una parada
+    // String porque no sabemos que tipo de id nos puedes dar el servicio externo
     @Column(name = "external_id")
     private String externalId;
 

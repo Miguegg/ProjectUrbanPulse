@@ -5,7 +5,6 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import urbanpulse.dto.ContextStatus;
 import urbanpulse.dto.District;
-
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -51,5 +50,6 @@ public class UrbanContextEntity {
     @JoinTable(name = "urban_context_observation",
             joinColumns = @JoinColumn(name = "context_id"),
             inverseJoinColumns = @JoinColumn(name = "observation_id"))
+    // TODO: Decidir si Set o List
     private Set<ExternalObservationEntity> observations = new HashSet<>();
 }
