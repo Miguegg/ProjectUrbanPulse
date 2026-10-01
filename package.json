@@ -1,0 +1,7 @@
+{
+  "name": "project-urban-pulse",
+  "private": true,
+  "devDependencies": {
+    "supabase": "^2.93.0"
+  }
+}

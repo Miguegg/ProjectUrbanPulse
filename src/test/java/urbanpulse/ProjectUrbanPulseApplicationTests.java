@@ -1,10 +1,10 @@
-package org.example.proyectourbanpulse;
+package urbanpulse;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProyectoUrbanPulseApplicationTests {
+class ProjectUrbanPulseApplicationTests {
 
     @Test
     void contextLoads() {
