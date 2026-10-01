@@ -1,9 +1,8 @@
 package urbanpulse.dto;
 
 import lombok.Data;
-import urbanpulse.entity.ExternalObservationEntity;
-
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Data
 public class UrbanContext {
