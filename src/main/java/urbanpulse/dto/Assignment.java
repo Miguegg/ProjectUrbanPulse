@@ -1,9 +1,6 @@
 package urbanpulse.dto;
 
 import lombok.Data;
-import urbanpulse.dto.Incident;
-import urbanpulse.dto.User;
-
 import java.time.LocalDateTime;
 
 @Data
