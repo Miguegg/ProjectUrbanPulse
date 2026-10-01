@@ -1,10 +1,12 @@
 package urbanpulse.mapper;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import urbanpulse.dto.User;
 import urbanpulse.entity.UserEntity;
 
 @Component
+@AllArgsConstructor
 public class UserMapper extends MapperDTO<User, UserEntity> {
     public User toDTO(UserEntity entity) {
         if (entity == null) return null;

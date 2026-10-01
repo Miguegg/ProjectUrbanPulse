@@ -1,12 +1,12 @@
 package urbanpulse.mapper;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import urbanpulse.dto.ExternalObservation;
-import urbanpulse.dto.Incident;
 import urbanpulse.dto.UrbanContext;
 import urbanpulse.entity.UrbanContextEntity;
 
 @Component
+@AllArgsConstructor
 public class UrbanContextMapper extends MapperDTO<UrbanContext, UrbanContextEntity> {
 
     private IncidentMapper incidentMapper;

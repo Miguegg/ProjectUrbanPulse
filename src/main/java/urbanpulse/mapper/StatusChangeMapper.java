@@ -1,11 +1,13 @@
 package urbanpulse.mapper;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import urbanpulse.dto.StatusChange;
 import urbanpulse.dto.User;
 import urbanpulse.entity.StatusChangeEntity;
 
 @Component
+@AllArgsConstructor
 public class StatusChangeMapper extends MapperDTO<StatusChange, StatusChangeEntity>{
 
     private IncidentMapper incidentMapper;
