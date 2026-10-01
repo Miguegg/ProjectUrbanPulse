@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class UrbanAsset {
     private Integer id;
     private AssetType assetType;
-    private ExternalSource source;
+    private ExternalSource externalSource;
     private String externalId;
     private String name;
     private Double latitude;
