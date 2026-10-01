@@ -17,7 +17,7 @@ public class AttachmentMapper extends  MapperDTO<Attachment, AttachmentEntity>{
 
         attachment.setId(attachmentEntity.getId());
         attachment.setIncident(incidentMapper.toDTO(attachmentEntity.getIncident()));
-        attachment.setUploadedBy(userMapper.toDTO(attachmentEntity.getUser()));
+        attachment.setUploadedBy(userMapper.toDTO(attachmentEntity.getUploadedBy()));
         attachment.setFileName(attachmentEntity.getFileName());
         attachment.setContentType(attachmentEntity.getContentType());
         attachment.setSizeBytes(attachmentEntity.getSizeBytes());
