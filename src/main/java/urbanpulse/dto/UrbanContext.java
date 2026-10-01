@@ -2,7 +2,7 @@ package urbanpulse.dto;
 
 import lombok.Data;
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 @Data
 public class UrbanContext {
@@ -13,5 +13,5 @@ public class UrbanContext {
     private ContextStatus status;
     private String summary;
     private LocalDateTime createdAt;
-    private Set<ExternalObservation> externalObservations;
+    private List<ExternalObservation> externalObservations;
 }

@@ -21,7 +21,7 @@ public class UrbanContextMapper extends MapperDTO<UrbanContext, UrbanContextEnti
         dto.setStatus(entity.getStatus());
         dto.setSummary(entity.getSummary());
         dto.setCreatedAt(entity.getCreatedAt());
-        dto.setExternalObservations(externalObservationMapper.toDTO(entity.getExternalObservations()));
+        dto.setExternalObservations(externalObservationMapper.toDTOList(entity.getExternalObservations()));
         return dto;
     }
 }

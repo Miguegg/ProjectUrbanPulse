@@ -6,8 +6,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import urbanpulse.dto.ContextStatus;
 import urbanpulse.dto.District;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 // Contexto urbano de una incidencia o de una zona en un instante (RF24, RF17).
 // Tiene que venir relleno al menos uno: incident o district.
@@ -50,6 +50,5 @@ public class UrbanContextEntity {
     @JoinTable(name = "urban_context_observation",
             joinColumns = @JoinColumn(name = "context_id"),
             inverseJoinColumns = @JoinColumn(name = "observation_id"))
-    // TODO: Decidir si Set o List
-    private Set<ExternalObservationEntity> externalObservations = new HashSet<>();
+    private List<ExternalObservationEntity> externalObservations = new ArrayList<>();
 }
