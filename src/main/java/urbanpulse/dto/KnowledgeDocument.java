@@ -15,7 +15,7 @@ public class KnowledgeDocument {
     private DocumentType docType;
     private String storagePath;
     private String sourceUrl;
-    private LocalDate effectiveDate;
+    private LocalDate effectiveFrom;
     private LocalDateTime indexedAt;
     private LocalDateTime createdAt;
 }
