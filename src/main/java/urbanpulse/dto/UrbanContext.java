@@ -13,5 +13,5 @@ public class UrbanContext {
     private ContextStatus status;
     private String summary;
     private LocalDateTime createdAt;
-    private Set<ExternalObservation> observation;
+    private Set<ExternalObservation> externalObservations;
 }

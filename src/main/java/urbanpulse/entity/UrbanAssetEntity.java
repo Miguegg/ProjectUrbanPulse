@@ -27,7 +27,7 @@ public class UrbanAssetEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private ExternalSource source;
+    private ExternalSource externalSource;
 
     // String porque no sabemos que tipo de id nos puedes dar el servicio externo
     @Column(name = "external_id")

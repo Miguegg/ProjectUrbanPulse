@@ -51,5 +51,5 @@ public class UrbanContextEntity {
             joinColumns = @JoinColumn(name = "context_id"),
             inverseJoinColumns = @JoinColumn(name = "observation_id"))
     // TODO: Decidir si Set o List
-    private Set<ExternalObservationEntity> observations = new HashSet<>();
+    private Set<ExternalObservationEntity> externalObservations = new HashSet<>();
 }

@@ -1,0 +1,24 @@
+package urbanpulse.mapper;
+
+import org.springframework.stereotype.Component;
+import urbanpulse.dto.User;
+import urbanpulse.entity.UserEntity;
+
+@Component
+public class UserMapper extends MapperDTO<User, UserEntity> {
+    public User toDTO(UserEntity entity) {
+        if (entity == null) return null;
+        User dto = new User();
+        dto.setId(entity.getId());
+        dto.setEmail(entity.getEmail());
+        dto.setPasswordHash(entity.getPasswordHash());
+        dto.setName(entity.getName());
+        dto.setPhone(entity.getPhone());
+        dto.setRole(entity.getRole());
+        dto.setDepartment(entity.getDepartment());
+        dto.setActive(entity.getActive());
+        // TODO: Si se borra en Supa y DTO se borra este tmb
+        dto.setCreatedAt(entity.getCreatedAt());
+        return dto;
+    }
+}
