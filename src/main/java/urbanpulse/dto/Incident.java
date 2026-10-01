@@ -22,6 +22,7 @@ public class Incident {
     private District district;
     private UserEntity reporter;
     private LocalDateTime reportedAt;
+    private LocalDateTime updatedAt;
     private LocalDateTime resolvedAt;
     private LocalDateTime closedAt;
 }
