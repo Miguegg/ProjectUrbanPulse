@@ -16,5 +16,6 @@ public class Notification {
     private String message;
     private NotificationStatus status;
     private LocalDateTime createdAt;
+    private LocalDateTime sentAt;
     private LocalDateTime readAt;
 }
