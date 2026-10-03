@@ -1,5 +1,6 @@
 package urbanpulse.controller.rest;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import urbanpulse.service.KnowledgeDocumentService;
 @RestController
 @Slf4j
 @AllArgsConstructor
+@Tag(name = "Knowledge Documents", description = "Versioned procedures and regulations available for consultation and RAG")
 @RequestMapping("/api/v1/knowledge-documents")
 public class KnowledgeDocumentRestController {
     private final KnowledgeDocumentService knowledgeDocumentService;

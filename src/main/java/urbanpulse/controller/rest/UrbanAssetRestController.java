@@ -1,5 +1,6 @@
 package urbanpulse.controller.rest;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import urbanpulse.service.UrbanAssetService;
 @RestController
 @Slf4j
 @AllArgsConstructor
+@Tag(name = "Urban Assets", description = "City assets and candidate assets near incidents or locations")
 @RequestMapping("/api/v1/urban-assets")
 public class UrbanAssetRestController {
     private final UrbanAssetService urbanAssetService;

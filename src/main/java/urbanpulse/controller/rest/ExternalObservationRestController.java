@@ -1,5 +1,6 @@
 package urbanpulse.controller.rest;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import urbanpulse.service.ExternalObservationService;
 @RestController
 @Slf4j
 @AllArgsConstructor
+@Tag(name = "External Observations", description = "Normalized observations ingested from external city data sources")
 @RequestMapping("/api/v1/external-observations")
 public class ExternalObservationRestController {
     private final ExternalObservationService externalObservationService;

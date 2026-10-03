@@ -1,5 +1,6 @@
 package urbanpulse.controller.rest;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import urbanpulse.service.UserService;
 @RestController
 @Slf4j
 @AllArgsConstructor
+@Tag(name = "Users", description = "User registration, lookup and role management")
 @RequestMapping("/api/v1/users")
 public class UserRestController {
     private final UserService userService;
