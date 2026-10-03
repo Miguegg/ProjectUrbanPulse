@@ -1,50 +1,47 @@
 package urbanpulse.controller.rest;
 
-
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import urbanpulse.service.UserService;
 
 @RestController
 @Slf4j
 @AllArgsConstructor
 @RequestMapping("/api/v1/users")
 public class UserRestController {
+    private final UserService userService;
 
-    //Get all users
+    /*
+     * Gets all users managed by the system.
+     */
     @GetMapping("/")
-    public void listarUsuarios(){
-
+    public void getUsers() {
+        //TODO
     }
 
-    //Get user by id
+    /*
+     * Gets a user by its ID.
+     * If it does not exist, it returns a 404 error.
+     */
     @GetMapping("/{id}")
-    public void buscarUsuario(){
-
+    public void getUserById() {
+        //TODO
     }
 
-    //Deletes user by id
-    @DeleteMapping("/{id")
-    public void eliminarUsuario(){
-
-    }
-
-    //Updates user by id
-    @PutMapping("/{id}")
-    public void  editarUsuario(){
-
-    }
-
-    //Creates a new user
+    /*
+     * Registers a new user in the system.
+     */
     @PostMapping("/")
-    public void crearUsuario(){
-
+    public void addUser() {
+        //TODO
     }
 
-    //Lists users according to the filters
-    @GetMapping("/filter")
-    public void filtrarUsuarios(){
-
+    /*
+     * Updates the roles and permissions assigned to a user.
+     */
+    @PatchMapping("/{id}/roles")
+    public void editUserRoles() {
+        //TODO
     }
-
 }

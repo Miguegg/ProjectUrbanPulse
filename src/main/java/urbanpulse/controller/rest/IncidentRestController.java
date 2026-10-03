@@ -3,12 +3,14 @@ package urbanpulse.controller.rest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import urbanpulse.service.IncidentService;
 
 @RestController
 @Slf4j
 @AllArgsConstructor
 @RequestMapping("/api/v1/incidents")
 public class IncidentRestController {
+    private final IncidentService incidentService;
 
     /*
     * Gets all incidents

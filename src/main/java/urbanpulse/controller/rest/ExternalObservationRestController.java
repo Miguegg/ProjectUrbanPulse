@@ -1,0 +1,30 @@
+package urbanpulse.controller.rest;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
+import urbanpulse.service.ExternalObservationService;
+
+@RestController
+@Slf4j
+@AllArgsConstructor
+@RequestMapping("/api/v1/external-observations")
+public class ExternalObservationRestController {
+    private final ExternalObservationService externalObservationService;
+
+    /*
+     * Filters external observations by source, zone, period or quality.
+     */
+    @GetMapping
+    public void filterExternalObservations() {
+        //TODO
+    }
+
+    /*
+     * Saves a normalized observation provided by an external system.
+     */
+    @PostMapping("/")
+    public void addExternalObservation() {
+        //TODO
+    }
+}
