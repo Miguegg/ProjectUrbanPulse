@@ -3,8 +3,12 @@ package urbanpulse.controller.rest;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import urbanpulse.dto.Assignment;
 import urbanpulse.service.AssignmentService;
+
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -16,25 +20,28 @@ public class AssignmentRestController {
 
     /*
      * Gets the assignment history associated with an incident.
-     */
+    */
     @GetMapping("/incidents/{incidentId}")
-    public void getIncidentAssignments() {
+    public ResponseEntity<List<Assignment>> getIncidentAssignments() {
         //TODO
+        return null;
     }
 
     /*
      * Assigns a validated incident to a department, team or technician.
-     */
+    */
     @PostMapping("/")
-    public void addAssignment() {
+    public ResponseEntity<Assignment> addAssignment() {
         //TODO
+        return null;
     }
 
     /*
      * Updates the temporal assignment relationship for an incident.
-     */
+    */
     @PatchMapping("/{id}")
-    public void editAssignment() {
+    public ResponseEntity<Assignment> editAssignment() {
         //TODO
+        return null;
     }
 }

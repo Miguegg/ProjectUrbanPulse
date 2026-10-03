@@ -3,8 +3,12 @@ package urbanpulse.controller.rest;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import urbanpulse.dto.Notification;
 import urbanpulse.service.NotificationService;
+
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -16,17 +20,19 @@ public class NotificationRestController {
 
     /*
      * Gets notifications generated for a user.
-     */
+    */
     @GetMapping("/users/{userId}")
-    public void getUserNotifications() {
+    public ResponseEntity<List<Notification>> getUserNotifications() {
         //TODO
+        return null;
     }
 
     /*
      * Updates the delivery status of a notification.
-     */
+    */
     @PatchMapping("/{id}")
-    public void editNotificationStatus() {
+    public ResponseEntity<Notification> editNotificationStatus() {
         //TODO
+        return null;
     }
 }

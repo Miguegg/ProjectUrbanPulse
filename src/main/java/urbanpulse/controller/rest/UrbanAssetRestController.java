@@ -3,8 +3,12 @@ package urbanpulse.controller.rest;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import urbanpulse.dto.UrbanAsset;
 import urbanpulse.service.UrbanAssetService;
+
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -16,26 +20,29 @@ public class UrbanAssetRestController {
 
     /*
      * Gets urban assets available as relevant city layers.
-     */
+    */
     @GetMapping("/")
-    public void getUrbanAssets() {
+    public ResponseEntity<List<UrbanAsset>> getUrbanAssets() {
         //TODO
+        return null;
     }
 
     /*
      * Finds candidate urban assets near an incident or location.
-     */
+    */
     @GetMapping("/nearby")
-    public void getNearbyUrbanAssets() {
+    public ResponseEntity<List<UrbanAsset>> getNearbyUrbanAssets() {
         //TODO
+        return null;
     }
 
     /*
      * Gets an urban asset by its ID.
      * If it does not exist, it returns a 404 error.
-     */
+    */
     @GetMapping("/{id}")
-    public void getUrbanAssetById() {
+    public ResponseEntity<UrbanAsset> getUrbanAssetById() {
         //TODO
+        return null;
     }
 }

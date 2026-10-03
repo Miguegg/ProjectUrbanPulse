@@ -3,7 +3,9 @@ package urbanpulse.controller.rest;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import urbanpulse.dto.User;
 
 @RestController
 @Slf4j
@@ -14,9 +16,10 @@ public class AuthController {
 
     /*
      * Authenticates a user or authorized municipal staff member.
-     */
+    */
     @PostMapping("/login")
-    public void login() {
+    public ResponseEntity<User> login() {
         //TODO
+        return null;
     }
 }

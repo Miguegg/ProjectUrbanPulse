@@ -3,8 +3,12 @@ package urbanpulse.controller.rest;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import urbanpulse.dto.User;
 import urbanpulse.service.UserService;
+
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -16,34 +20,38 @@ public class UserRestController {
 
     /*
      * Gets all users managed by the system.
-     */
+    */
     @GetMapping("/")
-    public void getUsers() {
+    public ResponseEntity<List<User>> getUsers() {
         //TODO
+        return null;
     }
 
     /*
      * Gets a user by its ID.
      * If it does not exist, it returns a 404 error.
-     */
+    */
     @GetMapping("/{id}")
-    public void getUserById() {
+    public ResponseEntity<User> getUserById() {
         //TODO
+        return null;
     }
 
     /*
      * Registers a new user in the system.
-     */
+    */
     @PostMapping("/")
-    public void addUser() {
+    public ResponseEntity<User> addUser() {
         //TODO
+        return null;
     }
 
     /*
      * Updates the roles and permissions assigned to a user.
-     */
+    */
     @PatchMapping("/{id}/roles")
-    public void editUserRoles() {
+    public ResponseEntity<User> editUserRoles() {
         //TODO
+        return null;
     }
 }

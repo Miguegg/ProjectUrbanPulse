@@ -8,6 +8,7 @@ import urbanpulse.dto.AssetType;
 import urbanpulse.dto.ExternalSource;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 // Elemento físico de la ciudad: semáforo, contenedor, parada... (RF22)
 @Getter
@@ -18,8 +19,8 @@ import java.time.LocalDateTime;
 public class UrbanAssetEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "asset_type")
