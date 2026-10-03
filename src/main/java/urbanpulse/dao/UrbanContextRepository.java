@@ -3,5 +3,7 @@ package urbanpulse.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import urbanpulse.entity.UrbanContextEntity;
 
-public interface UrbanContextRepository extends JpaRepository<UrbanContextEntity, Integer> {
+import java.util.UUID;
+
+public interface UrbanContextRepository extends JpaRepository<UrbanContextEntity, UUID> {
 }
