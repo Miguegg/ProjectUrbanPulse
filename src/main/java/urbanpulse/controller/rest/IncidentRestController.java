@@ -72,8 +72,11 @@ public class IncidentRestController {
      * Deletes an incident.
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteIncident() {
-        //TODO
-        return null;
+    public ResponseEntity<Void> deleteIncident(@PathVariable UUID id) {
+        if (!incidentService.deleteIncident(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        log.info("Incident {} deleted", id);
+        return ResponseEntity.noContent().build();
     }
 }
