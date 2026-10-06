@@ -32,4 +32,21 @@ public class IncidentMapper extends MapperDTO<Incident, IncidentEntity> {
         incident.setClosedAt(entity.getClosedAt());
         return incident;
     }
+
+    public IncidentEntity toEntity(Incident incident) {
+        IncidentEntity entity = new IncidentEntity();
+        entity.setTitle(incident.getTitle());
+        entity.setDescription(incident.getDescription());
+        entity.setCategory(incident.getCategory());
+        entity.setPriority(incident.getPriority());
+        entity.setPriorityJustification(incident.getPriorityJustification());
+        entity.setLatitude(incident.getLatitude());
+        entity.setLongitude(incident.getLongitude());
+        entity.setLocationAccuracyM(incident.getLocationAccuracy());
+        entity.setAddress(incident.getAddress());
+        entity.setNeighborhood(incident.getNeighbourhood());
+        entity.setDistrict(incident.getDistrict());
+        entity.setReporter(incident.getReporter());
+        return entity;
+    }
 }
