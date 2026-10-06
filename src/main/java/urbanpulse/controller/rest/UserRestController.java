@@ -3,12 +3,15 @@ package urbanpulse.controller.rest;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import urbanpulse.dto.Role;
 import urbanpulse.dto.User;
 import urbanpulse.service.UserService;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @Slf4j
@@ -22,9 +25,9 @@ public class UserRestController {
      * Gets all users managed by the system.
     */
     @GetMapping("/")
-    public ResponseEntity<List<User>> getUsers() {
-        //TODO
-        return null;
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = this.userService.getAllUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     /*
@@ -32,26 +35,33 @@ public class UserRestController {
      * If it does not exist, it returns a 404 error.
     */
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById() {
-        //TODO
-        return null;
+    public ResponseEntity<User> getUserById(@PathVariable UUID id) {
+        User user = this.userService.getUserById(id);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     /*
      * Registers a new user in the system.
     */
-    @PostMapping("/")
-    public ResponseEntity<User> addUser() {
-        //TODO
-        return null;
+    @PostMapping("/add")
+    public ResponseEntity<User> addUser(@RequestBody User user) {
+        User created = userService.addUser(
+                user.getEmail(),
+                user.getPassword(),
+                user.getName(),
+                user.getPhone(),
+                user.getRole(),
+                user.getDepartment()
+        );
+        return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
     /*
      * Updates the roles and permissions assigned to a user.
     */
     @PatchMapping("/{id}/roles")
-    public ResponseEntity<User> editUserRoles() {
-        //TODO
-        return null;
+    public ResponseEntity<User> editUserRoles(@PathVariable UUID id, @RequestBody Role role) {
+        User user = this.userService.editUserRoles(id, role);
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 }
