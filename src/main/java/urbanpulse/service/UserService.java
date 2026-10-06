@@ -46,6 +46,11 @@ public class UserService {
         return userMapper.toDTO(userRepository.save(user));
     }
 
+    @Transactional
+    public void deleteUserById(UUID id) {
+        userRepository.deleteById(id);
+    }
+
     public User editUserRoles(UUID id, Role newRole) {
         UserEntity user = userRepository.findById(id).orElse(null);
         // No puede dar null, porque se hará con select, radio o checkbox

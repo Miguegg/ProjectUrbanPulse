@@ -56,6 +56,12 @@ public class UserRestController {
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<User> deleteUserById(@PathVariable UUID id) {
+        this.userService.deleteUserById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
     /*
      * Updates the roles and permissions assigned to a user.
     */
