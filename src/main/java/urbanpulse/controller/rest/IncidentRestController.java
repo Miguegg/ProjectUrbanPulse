@@ -23,8 +23,7 @@ public class IncidentRestController {
     */
     @GetMapping("/")
     public ResponseEntity<List<Incident>> getIncidents() {
-        //TODO
-        return null;
+        return ResponseEntity.ok(this.incidentService.getAllIncidents());
     }
 
     /*
