@@ -3,8 +3,17 @@ package urbanpulse.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import urbanpulse.dao.IncidentRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 import urbanpulse.dto.Incident;
+import urbanpulse.dto.IncidentStatus;
+import urbanpulse.entity.IncidentEntity;
 import urbanpulse.mapper.IncidentMapper;
+
+import java.time.LocalDateTime;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -20,4 +29,40 @@ public class IncidentService {
         return incidentMapper.toDTO(incidentRepository.save(incidentMapper.toEntity(incident)));
     }
 
+
+    /*
+     * Partially updates an incident: only non-null fields of the patch are applied.
+     * Status changes must follow IncidentStatus.canTransitionTo, otherwise 409.
+     * Returns empty if the incident does not exist.
+     */
+    @Transactional
+    public Optional<Incident> editIncident(UUID id, Incident patch) {
+        return incidentRepository.findById(id).map(entity -> {
+            if (patch.getTitle() != null) entity.setTitle(patch.getTitle());
+            if (patch.getDescription() != null) entity.setDescription(patch.getDescription());
+            if (patch.getCategory() != null) entity.setCategory(patch.getCategory());
+            if (patch.getPriority() != null) entity.setPriority(patch.getPriority());
+            if (patch.getPriorityJustification() != null) entity.setPriorityJustification(patch.getPriorityJustification());
+            if (patch.getLatitude() != null) entity.setLatitude(patch.getLatitude());
+            if (patch.getLongitude() != null) entity.setLongitude(patch.getLongitude());
+            if (patch.getLocationAccuracy() != null) entity.setLocationAccuracyM(patch.getLocationAccuracy());
+            if (patch.getAddress() != null) entity.setAddress(patch.getAddress());
+            if (patch.getNeighbourhood() != null) entity.setNeighborhood(patch.getNeighbourhood());
+            if (patch.getDistrict() != null) entity.setDistrict(patch.getDistrict());
+            if (patch.getStatus() != null) changeStatus(entity, patch.getStatus());
+            return incidentMapper.toDTO(incidentRepository.save(entity));
+        });
+    }
+
+    private void changeStatus(IncidentEntity entity, IncidentStatus next) {
+        IncidentStatus current = entity.getStatus();
+        if (current == next) return;
+        if (!current.canTransitionTo(next)) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "Invalid status transition: " + current + " -> " + next);
+        }
+        entity.setStatus(next);
+        if (next == IncidentStatus.RESOLVED) entity.setResolvedAt(LocalDateTime.now());
+        if (next == IncidentStatus.CLOSED) entity.setClosedAt(LocalDateTime.now());
+    }
 }
