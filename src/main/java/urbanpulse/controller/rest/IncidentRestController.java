@@ -10,6 +10,7 @@ import urbanpulse.service.IncidentService;
 
 import java.net.URI;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @Slf4j
@@ -61,9 +62,10 @@ public class IncidentRestController {
      * Updates an incident.
     */
     @PatchMapping("/{id}")
-    public ResponseEntity<Incident> editIncident() {
-        //TODO
-        return null;
+    public ResponseEntity<Incident> editIncident(@PathVariable UUID id, @RequestBody Incident incident) {
+        return incidentService.editIncident(id, incident)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     /*
