@@ -65,4 +65,13 @@ public class IncidentService {
         if (next == IncidentStatus.RESOLVED) entity.setResolvedAt(LocalDateTime.now());
         if (next == IncidentStatus.CLOSED) entity.setClosedAt(LocalDateTime.now());
     }
+
+    /*
+     * Deletes an incident. Returns false if it does not exist.
+     */
+    public boolean deleteIncident(UUID id) {
+        if (!incidentRepository.existsById(id)) return false;
+        incidentRepository.deleteById(id);
+        return true;
+    }
 }
