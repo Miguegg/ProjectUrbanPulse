@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import urbanpulse.dto.Incident;
 import urbanpulse.service.IncidentService;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -50,9 +51,10 @@ public class IncidentRestController {
      * Saves a new incident into the database
     */
     @PostMapping("/")
-    public ResponseEntity<Incident> addIncident() {
-        //TODO
-        return null;
+    public ResponseEntity<Incident> addIncident(@RequestBody Incident incident) {
+        Incident created = incidentService.addIncident(incident);
+        log.info("Incident {} created", created.getId());
+        return ResponseEntity.created(URI.create("/api/v1/incidents/" + created.getId())).body(created);
     }
 
     /*
