@@ -3,11 +3,13 @@ package urbanpulse.controller.rest;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import urbanpulse.dto.Incident;
+import urbanpulse.dto.*;
 import urbanpulse.service.IncidentService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -25,8 +27,7 @@ public class IncidentRestController {
     */
     @GetMapping("/")
     public ResponseEntity<List<Incident>> getIncidents() {
-        //TODO
-        return null;
+        return ResponseEntity.ok(this.incidentService.getAllIncidents());
     }
 
     /*
@@ -39,13 +40,32 @@ public class IncidentRestController {
         return incident.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    /*
-     * Filters incidents based on certain criteria.
-    */
+    /**
+     * Filters incidents using any combination of the supported criteria.
+     * Null filters are ignored, while multiple filters are combined with logical AND.
+     *
+     * @param status filter by incident status
+     * @param category filter by incident category
+     * @param date filter by reported date alias
+     * @param reportedAt filter by reported date
+     * @param priority filter by priority level
+     * @param district filter by district
+     * @param department filter by reporter department
+     * @return a list of incidents matching the request filters
+     */
     @GetMapping
-    public ResponseEntity<List<Incident>> filterIncidents() {
-        //TODO
-        return null;
+    public ResponseEntity<List<Incident>> filterIncidents(
+           @RequestParam(required = false) IncidentStatus status,
+           @RequestParam(required = false) Category category,
+           @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+           @RequestParam(required = false, name = "reportedAt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate reportedAt,
+           @RequestParam(required = false) Priority priority,
+           @RequestParam(required = false) District district,
+           @RequestParam(required = false) Department department) {
+
+       LocalDate filterDate = reportedAt != null ? reportedAt : date;
+       List<Incident> incidents = incidentService.filterIncidents(status, category, filterDate, priority, district, department);
+       return ResponseEntity.ok(incidents);
     }
 
     /*
