@@ -10,10 +10,8 @@ import urbanpulse.mapper.IncidentMapper;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import urbanpulse.dto.Incident;
-import urbanpulse.mapper.IncidentMapper;
-
-import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -25,6 +23,10 @@ public class IncidentService {
         return this.incidentMapper.toDTOList(incidentRepository.findAll());
     }
 
+    public Optional<Incident> getIncidentById(UUID id) {
+        Optional<IncidentEntity> incident = incidentRepository.findById(id);
+        return incident.map(incidentMapper::toDTO);
+    }
 
     /**
      * Filters incidents using the repository JPQL query.
