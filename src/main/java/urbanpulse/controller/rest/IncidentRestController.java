@@ -20,14 +20,12 @@ import java.util.List;
 public class IncidentRestController {
     private final IncidentService incidentService;
 
-    /**
-     * Retrieves all incidents stored in the system.
-     *
-     * @return all incidents as a response payload
-     */
+    /*
+    * Gets all incidents
+    */
     @GetMapping("/")
     public ResponseEntity<List<Incident>> getIncidents() {
-       throw new UnsupportedOperationException("Not implemented");
+        return ResponseEntity.ok(this.incidentService.getAllIncidents());
     }
 
     /*
@@ -73,8 +71,8 @@ public class IncidentRestController {
     */
     @PostMapping("/")
     public ResponseEntity<Incident> addIncident() {
-       //TODO
-       return null;
+        //TODO
+        return null;
     }
 
     /*
@@ -82,8 +80,8 @@ public class IncidentRestController {
     */
     @PatchMapping("/{id}")
     public ResponseEntity<Incident> editIncident() {
-       //TODO
-       return null;
+        //TODO
+        return null;
     }
 
     /*
@@ -91,7 +89,7 @@ public class IncidentRestController {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteIncident() {
-       //TODO
-       return null;
+        //TODO
+        return null;
     }
 }
