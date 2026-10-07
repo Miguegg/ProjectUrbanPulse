@@ -9,6 +9,7 @@ import urbanpulse.dto.UrbanAsset;
 import urbanpulse.service.UrbanAssetService;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @Slf4j
@@ -23,17 +24,21 @@ public class UrbanAssetRestController {
     */
     @GetMapping("/")
     public ResponseEntity<List<UrbanAsset>> getUrbanAssets() {
-        //TODO
-        return null;
+        try { return ResponseEntity.ok(this.urbanAssetService.getAllAssets()); }
+        catch(Exception e) { return ResponseEntity.notFound().build(); }
     }
 
     /*
      * Finds candidate urban assets near an incident or location.
+     * radiusMeters is optional (50 m by default) and must be greater than 0.
     */
     @GetMapping("/nearby")
-    public ResponseEntity<List<UrbanAsset>> getNearbyUrbanAssets() {
-        //TODO
-        return null;
+    public ResponseEntity<List<UrbanAsset>> getNearbyUrbanAssets(
+            @RequestParam UUID incidentID,
+            @RequestParam(defaultValue = "50") double radiusMeters) {
+        if (radiusMeters <= 0) return ResponseEntity.badRequest().build();
+        try { return ResponseEntity.ok(this.urbanAssetService.getNearbyAssets(incidentID, radiusMeters)); }
+        catch(Exception e) { return ResponseEntity.notFound().build(); }
     }
 
     /*
