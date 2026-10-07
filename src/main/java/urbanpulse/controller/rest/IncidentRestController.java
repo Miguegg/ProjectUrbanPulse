@@ -9,6 +9,8 @@ import urbanpulse.dto.Incident;
 import urbanpulse.service.IncidentService;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @Slf4j
@@ -32,9 +34,9 @@ public class IncidentRestController {
      * If it does not exist, it returns a 404 error.
     */
     @GetMapping("/{id}")
-    public ResponseEntity<Incident> getIncidentById() {
-        //TODO
-        return null;
+    public ResponseEntity<Incident> getIncidentById(@PathVariable UUID id) {
+        Optional<Incident> incident = incidentService.getIncidentById(id);
+        return incident.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     /*
