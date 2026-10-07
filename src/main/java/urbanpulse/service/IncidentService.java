@@ -46,7 +46,7 @@ public class IncidentService {
             Department department) {
 
         if (status == null && category == null && reportedAt == null && priority == null && district == null && department == null) {
-            throw new UnsupportedOperationException("All filters are null.");
+            return getAllIncidents();
         }
 
         LocalDateTime reportedAtStart = reportedAt != null ? reportedAt.atStartOfDay() : null;
