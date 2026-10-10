@@ -10,6 +10,8 @@ import urbanpulse.dto.IncidentStatus;
 import urbanpulse.dto.Priority;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -77,4 +79,23 @@ public class IncidentEntity {
 
     @Column(name = "closed_at")
     private LocalDateTime closedAt;
+
+    @OneToMany(mappedBy = "incident", cascade = CascadeType.REMOVE)
+    private List<AssignmentEntity> assignments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "incident", cascade = CascadeType.REMOVE)
+    private List<AttachmentEntity> attachments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "incident", cascade = CascadeType.REMOVE)
+    private List<StatusChangeEntity> statusChanges = new ArrayList<>();
+
+    @OneToMany(mappedBy = "incident", cascade = CascadeType.REMOVE)
+    private List<IncidentAssetEntity> incidentAssets = new ArrayList<>();
+
+    @OneToMany(mappedBy = "incident", cascade = CascadeType.REMOVE)
+    private List<NotificationEntity> notifications = new ArrayList<>();
+
+    @OneToMany(mappedBy = "incident", cascade = CascadeType.REMOVE)
+    private List<UrbanContextEntity> urbanContexts = new ArrayList<>();
+
 }

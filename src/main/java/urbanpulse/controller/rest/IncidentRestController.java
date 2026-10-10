@@ -10,8 +10,10 @@ import urbanpulse.dto.*;
 import urbanpulse.service.IncidentService;
 
 import java.time.LocalDate;
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.UUID;
 
 @RestController
@@ -72,26 +74,31 @@ public class IncidentRestController {
      * Saves a new incident into the database
     */
     @PostMapping("/")
-    public ResponseEntity<Incident> addIncident() {
-        //TODO
-        return null;
+    public ResponseEntity<Incident> addIncident(@RequestBody Incident incident) {
+        Incident created = incidentService.addIncident(incident);
+        log.info("Incident {} created", created.getId());
+        return ResponseEntity.created(URI.create("/api/v1/incidents/" + created.getId())).body(created);
     }
 
     /*
      * Updates an incident.
     */
     @PatchMapping("/{id}")
-    public ResponseEntity<Incident> editIncident() {
-        //TODO
-        return null;
+    public ResponseEntity<Incident> editIncident(@PathVariable UUID id, @RequestBody Incident incident) {
+        return incidentService.editIncident(id, incident)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     /*
      * Deletes an incident.
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteIncident() {
-        //TODO
-        return null;
+    public ResponseEntity<Void> deleteIncident(@PathVariable UUID id) {
+        if (!incidentService.deleteIncident(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        log.info("Incident {} deleted", id);
+        return ResponseEntity.noContent().build();
     }
 }
