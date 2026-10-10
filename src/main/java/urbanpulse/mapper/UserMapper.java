@@ -23,4 +23,11 @@ public class UserMapper extends MapperDTO<User, UserEntity> {
         dto.setCreatedAt(entity.getCreatedAt());
         return dto;
     }
+
+    public UserEntity toEntity(User dto) {
+        if (dto == null) return null;
+        UserEntity entity = new UserEntity();
+        entity.setId(dto.getId());
+        return entity;
+    }
 }

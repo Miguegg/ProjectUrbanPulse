@@ -1,16 +1,14 @@
 package urbanpulse.dto;
 
 import lombok.Data;
-import urbanpulse.entity.IncidentEntity;
-import urbanpulse.entity.UserEntity;
 
 import java.time.LocalDateTime;
 
 @Data
 public class Notification {
     private Integer id;
-    private UserEntity recipient;
-    private IncidentEntity incident;
+    private User recipient;
+    private Incident incident;
     private NotificationEvent event;
     private NotificationChannel channel;
     private String message;

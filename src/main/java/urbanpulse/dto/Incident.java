@@ -1,7 +1,6 @@
 package urbanpulse.dto;
 
 import lombok.Data;
-import urbanpulse.entity.UserEntity;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -21,7 +20,7 @@ public class Incident {
     private String address;
     private String neighbourhood;
     private District district;
-    private UserEntity reporter;
+    private User reporter;
     private LocalDateTime reportedAt;
     private LocalDateTime updatedAt;
     private LocalDateTime resolvedAt;
